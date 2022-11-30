@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThrowIfArgument", "src\ThrowIfArgument.csproj", "{35C37D33-0CD6-4B8E-8701-5911A99C7A17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThrowIfArgument.UnitTests", "test\ThrowIfArgument.UnitTests.csproj", "{A17908EB-3494-45FB-829C-02CCEC46494F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35C37D33-0CD6-4B8E-8701-5911A99C7A17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35C37D33-0CD6-4B8E-8701-5911A99C7A17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35C37D33-0CD6-4B8E-8701-5911A99C7A17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35C37D33-0CD6-4B8E-8701-5911A99C7A17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A17908EB-3494-45FB-829C-02CCEC46494F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A17908EB-3494-45FB-829C-02CCEC46494F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A17908EB-3494-45FB-829C-02CCEC46494F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A17908EB-3494-45FB-829C-02CCEC46494F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
