@@ -6,12 +6,42 @@ using Xunit;
 
 namespace ThrowIfArgument.UnitTests;
 
-public class ThrowIfIntTests
+public class ThrowIfDoubleTests
 {
+    public ThrowIfDoubleTests()
+    {
+        ThrowIfDouble.Tolerance = 1;
+    }
+    
     [Theory]
     [AutoData]
-    public void IsZero_ArgumentIsNotZero_DoesNotThrow([Range(1, int.MaxValue)] int argument)
+    public void IsEqualTo_DifferenceIsOutsideTolerance_DoesNotThrow(double argument)
     {
+        var comparison = argument + ThrowIfDouble.Tolerance + new Random().NextDouble();
+        
+        var act = () => ThrowIf.Argument.IsEqualTo(argument, comparison);
+
+        act.Should().NotThrow();
+    }
+    
+    [Theory]
+    [AutoData]
+    public void IsEqualTo_DifferenceIsWithinTolerance_ThrowsArgumentException(double argument)
+    {
+        var comparison = argument + new Random().NextDouble();
+        
+        var act = () => ThrowIf.Argument.IsEqualTo(argument, comparison);
+
+        act.Should().Throw<ArgumentException>()
+            .WithMessage($"Must not be equal to '{comparison}'. (Parameter '{nameof(argument)}')");
+    }
+    
+    [Theory]
+    [AutoData]
+    public void IsZero_ArgumentIsNotZero_DoesNotThrow([Range(1, int.MaxValue)] double argument)
+    {
+        argument /= 4d;
+        
         var act = () => ThrowIf.Argument.IsZero(argument);
 
         act.Should().NotThrow();
@@ -20,7 +50,7 @@ public class ThrowIfIntTests
     [Fact]
     public void IsZero_ArgumentIsZero_ThrowsArgumentException()
     {
-        const int argument = 0;
+        const double argument = 0;
 
         var act = () => ThrowIf.Argument.IsZero(argument);
 
@@ -30,7 +60,7 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsLessThan_IsValid_DoesNotThrow(int argument, [Range(0, 10)] int difference)
+    public void IsLessThan_IsValid_DoesNotThrow(double argument, [Range(0, 10)] int difference)
     {
         var comparison = argument - difference;
         
@@ -41,7 +71,7 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsLessThan_IsInvalid_ThrowsArgumentException(int argument, [Range(1, 10)] int difference)
+    public void IsLessThan_IsInvalid_ThrowsArgumentException(double argument, [Range(1, 10)] int difference)
     {
         var comparison = argument + difference;
 
@@ -53,7 +83,7 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsLessThanOrEqualTo_IsValid_DoesNotThrow(int argument, [Range(1, 10)] int difference)
+    public void IsLessThanOrEqualTo_IsValid_DoesNotThrow(double argument, [Range(1, 10)] int difference)
     {
         var comparison = argument - difference;
         
@@ -64,7 +94,7 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsLessThanOrEqualTo_IsInvalid_ThrowsArgumentException(int argument, [Range(0, 10)] int difference)
+    public void IsLessThanOrEqualTo_IsInvalid_ThrowsArgumentException(double argument, [Range(0, 10)] int difference)
     {
         var comparison = argument + difference;
 
@@ -76,7 +106,7 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsGreaterThan_IsValid_DoesNotThrow(int argument, [Range(0, 10)] int difference)
+    public void IsGreaterThan_IsValid_DoesNotThrow(double argument, [Range(0, 10)] int difference)
     {
         var comparison = argument + difference;
         
@@ -87,7 +117,7 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsGreaterThan_IsInvalid_ThrowsArgumentException(int argument, [Range(1, 10)] int difference)
+    public void IsGreaterThan_IsInvalid_ThrowsArgumentException(double argument, [Range(1, 10)] int difference)
     {
         var comparison = argument - difference;
 
@@ -99,7 +129,7 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsGreaterThanOrEqualTo_IsValid_DoesNotThrow(int argument, [Range(1, 10)] int difference)
+    public void IsGreaterThanOrEqualTo_IsValid_DoesNotThrow(double argument, [Range(1, 10)] int difference)
     {
         var comparison = argument + difference;
         
@@ -110,7 +140,7 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsGreaterThanOrEqualTo_IsInvalid_ThrowsArgumentException(int argument, [Range(0, 10)] int difference)
+    public void IsGreaterThanOrEqualTo_IsInvalid_ThrowsArgumentException(double argument, [Range(0, 10)] int difference)
     {
         var comparison = argument - difference;
 

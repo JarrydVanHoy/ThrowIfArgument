@@ -9,23 +9,22 @@ public class ThrowIfGenericTests
 {
     [Theory]
     [AutoData]
-    public void IsNull_Primitive_ReturnsExpected(int argument)
+    public void IsNull_Primitive_DoesNotThrow(int argument)
     {
-        var result = ThrowIf.Argument.IsNull(argument);
+        var act = () => ThrowIf.Argument.IsNull(argument);
 
-        result.Should().Be(argument);
+        act.Should().NotThrow();
     }
 
     [Theory]
     [AutoData]
-    public void IsNull_ValidObject_ReturnsExpected(string testValue)
+    public void IsNull_ValidObject_DoesNotThrow(string testValue)
     {
         var argument = new {TestValue = testValue};
-        var expected = new {TestValue = testValue};
 
-        var result = ThrowIf.Argument.IsNull(argument);
+        var act = () => ThrowIf.Argument.IsNull(argument);
 
-        result.Should().BeEquivalentTo(expected);
+        act.Should().NotThrow();
     }
 
     [Fact]
@@ -64,24 +63,23 @@ public class ThrowIfGenericTests
 
     [Theory]
     [AutoData]
-    public void IsEqualTo_Primitive_ReturnsExpected(int argument)
+    public void IsEqualTo_Primitive_DoesNotThrow(int argument)
     {
-        var result = ThrowIf.Argument.IsEqualTo(argument, argument + 1);
+        var act = () => ThrowIf.Argument.IsEqualTo(argument, argument + 1);
 
-        result.Should().Be(argument);
+        act.Should().NotThrow();
     }
 
     [Theory]
     [AutoData]
-    public void IsEqualTo_ValidObject_ReturnsExpected(string testValue)
+    public void IsEqualTo_ValidObject_DoesNotThrow(string testValue)
     {
         var argument = new {TestValue = testValue};
         var comparison = new {TestValue = testValue + testValue};
-        var expected = new {TestValue = testValue};
 
-        var result = ThrowIf.Argument.IsEqualTo(argument, comparison);
+        var act = () => ThrowIf.Argument.IsEqualTo(argument, comparison);
 
-        result.Should().BeEquivalentTo(expected);
+        act.Should().NotThrow();
     }
 
     [Theory]
