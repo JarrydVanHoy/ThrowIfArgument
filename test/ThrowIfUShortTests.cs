@@ -6,11 +6,11 @@ using Xunit;
 
 namespace ThrowIfArgument.UnitTests;
 
-public class ThrowIfIntTests
+public class ThrowIfUShortTests
 {
     [Theory]
     [AutoData]
-    public void IsZero_ArgumentIsNotZero_DoesNotThrow([Range(1, int.MaxValue)] int argument)
+    public void IsZero_ArgumentIsNotZero_DoesNotThrow([Range(1, ushort.MaxValue)] ushort argument)
     {
         var act = () => ThrowIf.Argument.IsZero(argument);
 
@@ -20,7 +20,7 @@ public class ThrowIfIntTests
     [Fact]
     public void IsZero_ArgumentIsZero_ThrowsArgumentException()
     {
-        const int argument = 0;
+        const ushort argument = 0;
 
         var act = () => ThrowIf.Argument.IsZero(argument);
 
@@ -30,9 +30,9 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsLessThan_IsValid_DoesNotThrow(int argument, [Range(0, 10)] int difference)
+    public void IsLessThan_IsValid_DoesNotThrow(ushort argument, [Range(0, 10)] ushort difference)
     {
-        var comparison = argument - difference;
+        var comparison = (ushort) (argument - difference);
 
         var act = () => ThrowIf.Argument.IsLessThan(argument, comparison);
 
@@ -41,9 +41,9 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsLessThan_IsInvalid_ThrowsArgumentException(int argument, [Range(1, 10)] int difference)
+    public void IsLessThan_IsInvalid_ThrowsArgumentException(ushort argument, [Range(1, 10)] ushort difference)
     {
-        var comparison = argument + difference;
+        var comparison = (ushort) (argument + difference);
 
         var act = () => ThrowIf.Argument.IsLessThan(argument, comparison);
 
@@ -54,9 +54,9 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsLessThanOrEqualTo_IsValid_DoesNotThrow(int argument, [Range(1, 10)] int difference)
+    public void IsLessThanOrEqualTo_IsValid_DoesNotThrow(ushort argument, [Range(1, 10)] ushort difference)
     {
-        var comparison = argument - difference;
+        var comparison = (ushort) (argument - difference);
 
         var act = () => ThrowIf.Argument.IsLessThanOrEqualTo(argument, comparison);
 
@@ -65,9 +65,9 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsLessThanOrEqualTo_IsInvalid_ThrowsArgumentException(int argument, [Range(0, 10)] int difference)
+    public void IsLessThanOrEqualTo_IsInvalid_ThrowsArgumentException(ushort argument, [Range(0, 10)] ushort difference)
     {
-        var comparison = argument + difference;
+        var comparison = (ushort) (argument + difference);
 
         var act = () => ThrowIf.Argument.IsLessThanOrEqualTo(argument, comparison);
 
@@ -78,9 +78,9 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsGreaterThan_IsValid_DoesNotThrow(int argument, [Range(0, 10)] int difference)
+    public void IsGreaterThan_IsValid_DoesNotThrow(ushort argument, [Range(0, 10)] ushort difference)
     {
-        var comparison = argument + difference;
+        var comparison = (ushort) (argument + difference);
 
         var act = () => ThrowIf.Argument.IsGreaterThan(argument, comparison);
 
@@ -89,9 +89,9 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsGreaterThan_IsInvalid_ThrowsArgumentException(int argument, [Range(1, 10)] int difference)
+    public void IsGreaterThan_IsInvalid_ThrowsArgumentException(ushort argument, [Range(1, 10)] ushort difference)
     {
-        var comparison = argument - difference;
+        var comparison = (ushort) (argument - difference);
 
         var act = () => ThrowIf.Argument.IsGreaterThan(argument, comparison);
 
@@ -102,9 +102,9 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsGreaterThanOrEqualTo_IsValid_DoesNotThrow(int argument, [Range(1, 10)] int difference)
+    public void IsGreaterThanOrEqualTo_IsValid_DoesNotThrow(ushort argument, [Range(1, 10)] ushort difference)
     {
-        var comparison = argument + difference;
+        var comparison = (ushort) (argument + difference);
 
         var act = () => ThrowIf.Argument.IsGreaterThanOrEqualTo(argument, comparison);
 
@@ -113,9 +113,11 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsGreaterThanOrEqualTo_IsInvalid_ThrowsArgumentException(int argument, [Range(0, 10)] int difference)
+    public void IsGreaterThanOrEqualTo_IsInvalid_ThrowsArgumentException(
+        ushort argument,
+        [Range(0, 10)] ushort difference)
     {
-        var comparison = argument - difference;
+        var comparison = (ushort) (argument - difference);
 
         var act = () => ThrowIf.Argument.IsGreaterThanOrEqualTo(argument, comparison);
 

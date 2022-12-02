@@ -3,7 +3,7 @@ using ThrowIfArgument.Extensions;
 
 namespace ThrowIfArgument;
 
-public static class ThrowIfDecimal
+public static partial class ThrowIfBuilderExtensions
 {
     public static decimal IsZero(
         this IThrowIfBuilder builder,
@@ -28,7 +28,7 @@ public static class ThrowIfDecimal
 
         throw new ArgumentException(
             string.IsNullOrWhiteSpace(message)
-                ? $"Must not be less than '{comparison}'."
+                ? $"Value was '{argument}', but must not be less than '{comparison}'."
                 : message.AddPeriod(),
             argumentName);
     }
@@ -47,15 +47,15 @@ public static class ThrowIfDecimal
 
         throw new ArgumentException(
             string.IsNullOrWhiteSpace(message)
-                ? $"Must not be less than or equal to '{comparison}'."
+                ? $"Value was '{argument}', but must not be less than or equal to '{comparison}'."
                 : message.AddPeriod(),
             argumentName);
     }
-    
+
     public static decimal IsGreaterThan(
         this IThrowIfBuilder builder,
-        decimal argument, 
-        decimal comparison, 
+        decimal argument,
+        decimal comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -66,7 +66,7 @@ public static class ThrowIfDecimal
 
         throw new ArgumentException(
             string.IsNullOrWhiteSpace(message)
-                ? $"Must not be greater than '{comparison}'."
+                ? $"Value was '{argument}', but must not be greater than '{comparison}'."
                 : message.AddPeriod(),
             argumentName);
     }
@@ -85,7 +85,7 @@ public static class ThrowIfDecimal
 
         throw new ArgumentException(
             string.IsNullOrWhiteSpace(message)
-                ? $"Must not be greater than or equal to '{comparison}'."
+                ? $"Value was '{argument}', but must not be greater than or equal to '{comparison}'."
                 : message.AddPeriod(),
             argumentName);
     }

@@ -5,19 +5,21 @@ namespace ThrowIfArgument;
 
 public static partial class ThrowIfBuilderExtensions
 {
-    public static int IsZero(
+    public static byte IsZero(
         this IThrowIfBuilder builder,
-        int argument,
+        byte argument,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
-        return ThrowIf.Argument.IsEqualTo(argument, 0, message, argumentName);
+        const byte zero = 0;
+
+        return ThrowIf.Argument.IsEqualTo(argument, zero, message, argumentName);
     }
 
-    public static int IsLessThan(
+    public static byte IsLessThan(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        byte argument,
+        byte comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -33,10 +35,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsLessThanOrEqualTo(
+    public static byte IsLessThanOrEqualTo(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        byte argument,
+        byte comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -52,10 +54,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsGreaterThan(
+    public static byte IsGreaterThan(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        byte argument,
+        byte comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -71,10 +73,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsGreaterThanOrEqualTo(
+    public static byte IsGreaterThanOrEqualTo(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        byte argument,
+        byte comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {

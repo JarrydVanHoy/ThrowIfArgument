@@ -5,19 +5,21 @@ namespace ThrowIfArgument;
 
 public static partial class ThrowIfBuilderExtensions
 {
-    public static int IsZero(
+    public static short IsZero(
         this IThrowIfBuilder builder,
-        int argument,
+        short argument,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
-        return ThrowIf.Argument.IsEqualTo(argument, 0, message, argumentName);
+        const short zero = 0;
+
+        return ThrowIf.Argument.IsEqualTo(argument, zero, message, argumentName);
     }
 
-    public static int IsLessThan(
+    public static short IsLessThan(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        short argument,
+        short comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -33,10 +35,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsLessThanOrEqualTo(
+    public static short IsLessThanOrEqualTo(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        short argument,
+        short comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -52,10 +54,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsGreaterThan(
+    public static short IsGreaterThan(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        short argument,
+        short comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -71,10 +73,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsGreaterThanOrEqualTo(
+    public static short IsGreaterThanOrEqualTo(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        short argument,
+        short comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {

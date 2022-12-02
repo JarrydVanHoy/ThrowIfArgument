@@ -5,19 +5,21 @@ namespace ThrowIfArgument;
 
 public static partial class ThrowIfBuilderExtensions
 {
-    public static int IsZero(
+    public static ushort IsZero(
         this IThrowIfBuilder builder,
-        int argument,
+        ushort argument,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
-        return ThrowIf.Argument.IsEqualTo(argument, 0, message, argumentName);
+        const ushort zero = 0;
+
+        return ThrowIf.Argument.IsEqualTo(argument, zero, message, argumentName);
     }
 
-    public static int IsLessThan(
+    public static ushort IsLessThan(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        ushort argument,
+        ushort comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -33,10 +35,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsLessThanOrEqualTo(
+    public static ushort IsLessThanOrEqualTo(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        ushort argument,
+        ushort comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -52,10 +54,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsGreaterThan(
+    public static ushort IsGreaterThan(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        ushort argument,
+        ushort comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -71,10 +73,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsGreaterThanOrEqualTo(
+    public static ushort IsGreaterThanOrEqualTo(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        ushort argument,
+        ushort comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {

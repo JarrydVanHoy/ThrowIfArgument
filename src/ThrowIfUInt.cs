@@ -5,19 +5,19 @@ namespace ThrowIfArgument;
 
 public static partial class ThrowIfBuilderExtensions
 {
-    public static int IsZero(
+    public static uint IsZero(
         this IThrowIfBuilder builder,
-        int argument,
+        uint argument,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
-        return ThrowIf.Argument.IsEqualTo(argument, 0, message, argumentName);
+        return ThrowIf.Argument.IsEqualTo(argument, 0u, message, argumentName);
     }
 
-    public static int IsLessThan(
+    public static uint IsLessThan(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        uint argument,
+        uint comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -33,10 +33,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsLessThanOrEqualTo(
+    public static uint IsLessThanOrEqualTo(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        uint argument,
+        uint comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -52,10 +52,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsGreaterThan(
+    public static uint IsGreaterThan(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        uint argument,
+        uint comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -71,10 +71,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsGreaterThanOrEqualTo(
+    public static uint IsGreaterThanOrEqualTo(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        uint argument,
+        uint comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {

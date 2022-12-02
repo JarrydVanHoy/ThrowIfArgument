@@ -6,11 +6,11 @@ using Xunit;
 
 namespace ThrowIfArgument.UnitTests;
 
-public class ThrowIfIntTests
+public class ThrowIfByteTests
 {
     [Theory]
     [AutoData]
-    public void IsZero_ArgumentIsNotZero_DoesNotThrow([Range(1, int.MaxValue)] int argument)
+    public void IsZero_ArgumentIsNotZero_DoesNotThrow(byte argument)
     {
         var act = () => ThrowIf.Argument.IsZero(argument);
 
@@ -20,7 +20,7 @@ public class ThrowIfIntTests
     [Fact]
     public void IsZero_ArgumentIsZero_ThrowsArgumentException()
     {
-        const int argument = 0;
+        const byte argument = 0;
 
         var act = () => ThrowIf.Argument.IsZero(argument);
 
@@ -30,22 +30,23 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsLessThan_IsValid_DoesNotThrow(int argument, [Range(0, 10)] int difference)
+    public void IsLessThan_IsValid_DoesNotThrow([Range(10, 20)] byte argument, [Range(0, 10)] byte difference)
     {
         var comparison = argument - difference;
 
-        var act = () => ThrowIf.Argument.IsLessThan(argument, comparison);
+        var act = () => ThrowIf.Argument.IsLessThan(argument, (byte) comparison);
 
         act.Should().NotThrow();
     }
 
     [Theory]
     [AutoData]
-    public void IsLessThan_IsInvalid_ThrowsArgumentException(int argument, [Range(1, 10)] int difference)
+    public void IsLessThan_IsInvalid_ThrowsArgumentException([Range(1, 10)] byte argument,
+        [Range(1, 10)] byte difference)
     {
         var comparison = argument + difference;
 
-        var act = () => ThrowIf.Argument.IsLessThan(argument, comparison);
+        var act = () => ThrowIf.Argument.IsLessThan(argument, (byte) comparison);
 
         act.Should().Throw<ArgumentException>()
             .WithMessage(
@@ -54,22 +55,23 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsLessThanOrEqualTo_IsValid_DoesNotThrow(int argument, [Range(1, 10)] int difference)
+    public void IsLessThanOrEqualTo_IsValid_DoesNotThrow([Range(11, 20)] byte argument, [Range(1, 10)] byte difference)
     {
         var comparison = argument - difference;
 
-        var act = () => ThrowIf.Argument.IsLessThanOrEqualTo(argument, comparison);
+        var act = () => ThrowIf.Argument.IsLessThanOrEqualTo(argument, (byte) comparison);
 
         act.Should().NotThrow();
     }
 
     [Theory]
     [AutoData]
-    public void IsLessThanOrEqualTo_IsInvalid_ThrowsArgumentException(int argument, [Range(0, 10)] int difference)
+    public void IsLessThanOrEqualTo_IsInvalid_ThrowsArgumentException([Range(1, 10)] byte argument,
+        [Range(0, 10)] byte difference)
     {
         var comparison = argument + difference;
 
-        var act = () => ThrowIf.Argument.IsLessThanOrEqualTo(argument, comparison);
+        var act = () => ThrowIf.Argument.IsLessThanOrEqualTo(argument, (byte) comparison);
 
         act.Should().Throw<ArgumentException>()
             .WithMessage(
@@ -78,22 +80,23 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsGreaterThan_IsValid_DoesNotThrow(int argument, [Range(0, 10)] int difference)
+    public void IsGreaterThan_IsValid_DoesNotThrow([Range(0, 10)] byte argument, [Range(0, 10)] byte difference)
     {
         var comparison = argument + difference;
 
-        var act = () => ThrowIf.Argument.IsGreaterThan(argument, comparison);
+        var act = () => ThrowIf.Argument.IsGreaterThan(argument, (byte) comparison);
 
         act.Should().NotThrow();
     }
 
     [Theory]
     [AutoData]
-    public void IsGreaterThan_IsInvalid_ThrowsArgumentException(int argument, [Range(1, 10)] int difference)
+    public void IsGreaterThan_IsInvalid_ThrowsArgumentException([Range(11, 20)] byte argument,
+        [Range(1, 10)] byte difference)
     {
         var comparison = argument - difference;
 
-        var act = () => ThrowIf.Argument.IsGreaterThan(argument, comparison);
+        var act = () => ThrowIf.Argument.IsGreaterThan(argument, (byte) comparison);
 
         act.Should().Throw<ArgumentException>()
             .WithMessage(
@@ -102,22 +105,24 @@ public class ThrowIfIntTests
 
     [Theory]
     [AutoData]
-    public void IsGreaterThanOrEqualTo_IsValid_DoesNotThrow(int argument, [Range(1, 10)] int difference)
+    public void IsGreaterThanOrEqualTo_IsValid_DoesNotThrow([Range(0, 9)] byte argument, [Range(1, 10)] byte difference)
     {
         var comparison = argument + difference;
 
-        var act = () => ThrowIf.Argument.IsGreaterThanOrEqualTo(argument, comparison);
+        var act = () => ThrowIf.Argument.IsGreaterThanOrEqualTo(argument, (byte) comparison);
 
         act.Should().NotThrow();
     }
 
     [Theory]
     [AutoData]
-    public void IsGreaterThanOrEqualTo_IsInvalid_ThrowsArgumentException(int argument, [Range(0, 10)] int difference)
+    public void IsGreaterThanOrEqualTo_IsInvalid_ThrowsArgumentException(
+        byte argument,
+        [Range(0, 10)] byte difference)
     {
         var comparison = argument - difference;
 
-        var act = () => ThrowIf.Argument.IsGreaterThanOrEqualTo(argument, comparison);
+        var act = () => ThrowIf.Argument.IsGreaterThanOrEqualTo(argument, (byte) comparison);
 
         act.Should().Throw<ArgumentException>()
             .WithMessage(

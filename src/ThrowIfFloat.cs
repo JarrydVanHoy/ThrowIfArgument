@@ -5,19 +5,60 @@ namespace ThrowIfArgument;
 
 public static partial class ThrowIfBuilderExtensions
 {
-    public static int IsZero(
+    public static float IsEqualTo(
         this IThrowIfBuilder builder,
-        int argument,
+        float argument,
+        float comparison,
+        float tolerance,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
-        return ThrowIf.Argument.IsEqualTo(argument, 0, message, argumentName);
+        if (Math.Abs(argument - comparison) > tolerance)
+        {
+            return argument;
+        }
+
+        throw new ArgumentException(
+            string.IsNullOrWhiteSpace(message)
+                ? $"Value was '{argument}', but must not be equal to '{comparison}' within tolerance of '{tolerance}'."
+                : message.AddPeriod(),
+            argumentName);
     }
 
-    public static int IsLessThan(
+    public static float IsNotEqualTo(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        float argument,
+        float comparison,
+        float tolerance,
+        string? message = null,
+        [CallerArgumentExpression("argument")] string? argumentName = null)
+    {
+        if (Math.Abs(argument - comparison) <= tolerance)
+        {
+            return argument;
+        }
+
+        throw new ArgumentException(
+            string.IsNullOrWhiteSpace(message)
+                ? $"Value was '{argument}', but must be equal to '{comparison}' within tolerance of '{tolerance}'."
+                : message.AddPeriod(),
+            argumentName);
+    }
+
+    public static float IsZero(
+        this IThrowIfBuilder builder,
+        float argument,
+        float tolerance,
+        string? message = null,
+        [CallerArgumentExpression("argument")] string? argumentName = null)
+    {
+        return ThrowIf.Argument.IsEqualTo(argument, 0f, tolerance, message, argumentName);
+    }
+
+    public static float IsLessThan(
+        this IThrowIfBuilder builder,
+        float argument,
+        float comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -33,10 +74,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsLessThanOrEqualTo(
+    public static float IsLessThanOrEqualTo(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        float argument,
+        float comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -52,10 +93,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsGreaterThan(
+    public static float IsGreaterThan(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        float argument,
+        float comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -71,10 +112,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsGreaterThanOrEqualTo(
+    public static float IsGreaterThanOrEqualTo(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        float argument,
+        float comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {

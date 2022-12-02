@@ -5,19 +5,19 @@ namespace ThrowIfArgument;
 
 public static partial class ThrowIfBuilderExtensions
 {
-    public static int IsZero(
+    public static ulong IsZero(
         this IThrowIfBuilder builder,
-        int argument,
+        ulong argument,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
-        return ThrowIf.Argument.IsEqualTo(argument, 0, message, argumentName);
+        return ThrowIf.Argument.IsEqualTo(argument, 0ul, message, argumentName);
     }
 
-    public static int IsLessThan(
+    public static ulong IsLessThan(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        ulong argument,
+        ulong comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -33,10 +33,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsLessThanOrEqualTo(
+    public static ulong IsLessThanOrEqualTo(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        ulong argument,
+        ulong comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -52,10 +52,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsGreaterThan(
+    public static ulong IsGreaterThan(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        ulong argument,
+        ulong comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -71,10 +71,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsGreaterThanOrEqualTo(
+    public static ulong IsGreaterThanOrEqualTo(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        ulong argument,
+        ulong comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {

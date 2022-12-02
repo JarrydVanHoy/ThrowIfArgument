@@ -5,19 +5,19 @@ namespace ThrowIfArgument;
 
 public static partial class ThrowIfBuilderExtensions
 {
-    public static int IsZero(
+    public static long IsZero(
         this IThrowIfBuilder builder,
-        int argument,
+        long argument,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
         return ThrowIf.Argument.IsEqualTo(argument, 0, message, argumentName);
     }
 
-    public static int IsLessThan(
+    public static long IsLessThan(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        long argument,
+        long comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -33,10 +33,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsLessThanOrEqualTo(
+    public static long IsLessThanOrEqualTo(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        long argument,
+        long comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -52,10 +52,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsGreaterThan(
+    public static long IsGreaterThan(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        long argument,
+        long comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
@@ -71,10 +71,10 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static int IsGreaterThanOrEqualTo(
+    public static long IsGreaterThanOrEqualTo(
         this IThrowIfBuilder builder,
-        int argument,
-        int comparison,
+        long argument,
+        long comparison,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null)
     {
