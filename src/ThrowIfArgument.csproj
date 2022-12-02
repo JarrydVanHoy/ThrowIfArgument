@@ -5,7 +5,25 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <RootNamespace>ThrowIfArgument</RootNamespace>
+        <PackageId>ThrowIfArgument</PackageId>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Authors>Jarryd Van Hoy (@JarrydVanHoy)</Authors>
+        <PackageProjectUrl>https://github.com/JarrydVanHoy/ThrowIfArgument</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/JarrydVanHoy/ThrowIfArgument</RepositoryUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Description>An extensible argument validation package by @JarrydVanHoy that read fluently.</Description>
+        <PackageTags>argument validation guard clause clauses assert assertion</PackageTags>
+        <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+        <Version>0.0.0-alpha02</Version>
+        <PackageIcon>icon.jpeg</PackageIcon>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\LICENSE" Pack="true" PackagePath="" />
+        <None Include="..\README.md" Pack="true" PackagePath="" />
+        <None Include="..\icon.jpeg" Pack="true" PackagePath="" />
+    </ItemGroup>
 
     <ItemGroup>
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
