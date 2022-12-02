@@ -14,7 +14,12 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <Description>An extensible argument validation package by @JarrydVanHoy that I feel reads quite fluently.</Description>
         <PackageTags>argument validation guard clause clauses assert assertion</PackageTags>
-        <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+        <PackageReleaseNotes>
+            Initial Release
+            TODO:
+                Update read me fully
+                Add support for other frameworks and versions
+        </PackageReleaseNotes>
         <Version>0.0.0-alpha03</Version>
         <PackageIcon>icon.jpeg</PackageIcon>
     </PropertyGroup>
