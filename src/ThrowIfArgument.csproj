@@ -16,11 +16,8 @@
         <PackageTags>argument validation guard clause clauses assert assertion</PackageTags>
         <PackageReleaseNotes>
             Initial Release
-            TODO:
-                Update read me fully
-                Add support for other frameworks and versions
         </PackageReleaseNotes>
-        <Version>0.0.0-alpha03</Version>
+        <Version>0.0.0-alpha04</Version>
         <PackageIcon>icon.jpeg</PackageIcon>
     </PropertyGroup>
 
