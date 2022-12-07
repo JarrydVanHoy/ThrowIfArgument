@@ -17,8 +17,12 @@
         <PackageReleaseNotes>
             Adding XML comments
         </PackageReleaseNotes>
-        <Version>1.0.1</Version>
+        <Version>1.0.2</Version>
         <PackageIcon>icon.jpeg</PackageIcon>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DocumentationFile>bin\Release\net6.0\ThrowIfArgument.xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
