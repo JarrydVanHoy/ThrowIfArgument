@@ -5,11 +5,15 @@ using Xunit;
 
 namespace ThrowIfArgument.UnitTests.Extensions;
 
-public class StringExtensions
+// ReSharper disable once InconsistentNaming
+public class StringExtensionsTests
 {
     [Theory]
     [AutoData]
-    public void AddPeriod_ValueDoesNotEndInAPeriod_ReturnsWithEndingPeriod(string value)
+    public void AddPeriod_ValueDoesNotEndInAPeriod_ReturnsWithEndingPeriod
+    (
+        string value
+    )
     {
         var result = value.AddPeriod();
 
@@ -18,7 +22,10 @@ public class StringExtensions
 
     [Theory]
     [AutoData]
-    public void AddPeriod_ValueDoesEndInAPeriod_ReturnsAsIs(string value)
+    public void AddPeriod_ValueDoesEndInAPeriod_ReturnsAsIs
+    (
+        string value
+    )
     {
         value += ".";
 

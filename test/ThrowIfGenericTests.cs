@@ -11,7 +11,10 @@ public class ThrowIfGenericTests
 {
     [Theory]
     [AutoData]
-    public void IsNull_ValidPrimitive_DoesNotThrow(int argument)
+    public void IsNull_ValidPrimitive_DoesNotThrow
+    (
+        int argument
+    )
     {
         var act = () => ThrowIf.Argument.IsNull(argument);
 
@@ -20,7 +23,10 @@ public class ThrowIfGenericTests
 
     [Theory]
     [AutoData]
-    public void IsNull_ValidObject_DoesNotThrow(string testValue)
+    public void IsNull_ValidObject_DoesNotThrow
+    (
+        string testValue
+    )
     {
         var argument = new {TestValue = testValue};
 
@@ -42,7 +48,10 @@ public class ThrowIfGenericTests
 
     [Theory]
     [AutoData]
-    public void IsNull_NullObjectWithMessage_ThrowsArgumentNullException(string message)
+    public void IsNull_NullObjectWithMessage_ThrowsArgumentNullException
+    (
+        string message
+    )
     {
         var argument = (object?) null;
 
@@ -54,7 +63,10 @@ public class ThrowIfGenericTests
 
     [Theory]
     [AutoData]
-    public void IsEqualTo_Primitive_DoesNotThrow(int argument)
+    public void IsEqualTo_Primitive_DoesNotThrow
+    (
+        int argument
+    )
     {
         var act = () => ThrowIf.Argument.IsEqualTo(argument, argument + 1);
 
@@ -63,7 +75,10 @@ public class ThrowIfGenericTests
 
     [Theory]
     [AutoData]
-    public void IsEqualTo_ValidObject_DoesNotThrow(string testValue)
+    public void IsEqualTo_ValidObject_DoesNotThrow
+    (
+        string testValue
+    )
     {
         var argument = new {TestValue = testValue};
         var comparison = new {TestValue = testValue + testValue};
@@ -75,7 +90,10 @@ public class ThrowIfGenericTests
 
     [Theory]
     [AutoData]
-    public void IsEqualTo_InvalidPrimitive_ThrowsArgumentException(int argument)
+    public void IsEqualTo_InvalidPrimitive_ThrowsArgumentException
+    (
+        int argument
+    )
     {
         var act = () => ThrowIf.Argument.IsEqualTo(argument, argument);
 
@@ -86,7 +104,10 @@ public class ThrowIfGenericTests
 
     [Theory]
     [AutoData]
-    public void IsEqualTo_InvalidObject_ThrowsArgumentException(string testValue)
+    public void IsEqualTo_InvalidObject_ThrowsArgumentException
+    (
+        string testValue
+    )
     {
         var argument = new {TestValue = testValue};
         var comparison = new {TestValue = testValue};
@@ -100,7 +121,10 @@ public class ThrowIfGenericTests
 
     [Theory]
     [AutoData]
-    public void IsNotEqualTo_Primitive_DoesNotThrow(int argument)
+    public void IsNotEqualTo_Primitive_DoesNotThrow
+    (
+        int argument
+    )
     {
         var act = () => ThrowIf.Argument.IsNotEqualTo(argument, argument);
 
@@ -109,7 +133,10 @@ public class ThrowIfGenericTests
 
     [Theory]
     [AutoData]
-    public void IsNotEqualTo_ValidObject_DoesNotThrow(string testValue)
+    public void IsNotEqualTo_ValidObject_DoesNotThrow
+    (
+        string testValue
+    )
     {
         var argument = new {TestValue = testValue};
         var comparison = new {TestValue = testValue};
@@ -121,7 +148,11 @@ public class ThrowIfGenericTests
 
     [Theory]
     [AutoData]
-    public void IsNotEqualTo_InvalidPrimitive_ThrowsArgumentException(int argument, int comparison)
+    public void IsNotEqualTo_InvalidPrimitive_ThrowsArgumentException
+    (
+        int argument,
+        int comparison
+    )
     {
         var act = () => ThrowIf.Argument.IsNotEqualTo(argument, comparison);
 
@@ -132,7 +163,10 @@ public class ThrowIfGenericTests
 
     [Theory]
     [AutoData]
-    public void IsNotEqualTo_InvalidObject_ThrowsArgumentException(string testValue)
+    public void IsNotEqualTo_InvalidObject_ThrowsArgumentException
+    (
+        string testValue
+    )
     {
         var argument = new {TestValue = testValue};
         var comparison = new {TestValue = testValue + testValue};
@@ -146,7 +180,10 @@ public class ThrowIfGenericTests
 
     [Theory]
     [AutoData]
-    public void IsAgainstExpression_IntMatches_DoesNotThrow([Range(0, 100)] int argument)
+    public void IsAgainstExpression_IntMatches_DoesNotThrow
+    (
+        [Range(0, 100)] int argument
+    )
     {
         var action = () => ThrowIf.Argument.IsAgainstExpression(argument, i => i is >= 0 and <= 100);
 
@@ -155,7 +192,10 @@ public class ThrowIfGenericTests
 
     [Theory]
     [AutoData]
-    public void IsAgainstExpression_IntDoesNotMatch_ThrowsArgumentException([Range(0, 100)] int argument)
+    public void IsAgainstExpression_IntDoesNotMatch_ThrowsArgumentException
+    (
+        [Range(0, 100)] int argument
+    )
     {
         var action = () => ThrowIf.Argument.IsAgainstExpression(argument, i => i is < 0 or > 100);
 
@@ -166,7 +206,10 @@ public class ThrowIfGenericTests
 
     [Theory]
     [AutoData]
-    public void IsAgainstExpression_TestClassMatches_DoesNotThrow(TestClass argument)
+    public void IsAgainstExpression_TestClassMatches_DoesNotThrow
+    (
+        TestClass argument
+    )
     {
         var action = () => ThrowIf.Argument.IsAgainstExpression(argument, i => i.TestField is "Willy Wonka");
 
@@ -175,7 +218,10 @@ public class ThrowIfGenericTests
 
     [Theory]
     [AutoData]
-    public void IsAgainstExpression_TestClassDoesNotMatch_ThrowsArgumentException(TestClass argument)
+    public void IsAgainstExpression_TestClassDoesNotMatch_ThrowsArgumentException
+    (
+        TestClass argument
+    )
     {
         var action = () => ThrowIf.Argument.IsAgainstExpression(argument, i => i.TestField is not "Willy Wonka");
 
@@ -205,11 +251,14 @@ public class ThrowIfGenericTests
             .WithMessage($"Value was '{argument.Name}', but must be a generic type. (Parameter '{nameof(argument)}')");
     }
 
+    // ReSharper disable once InconsistentNaming
     public class TestClass
     {
         public string TestField => "Willy Wonka";
     }
 
+    // ReSharper disable once InconsistentNaming
+    // ReSharper disable once UnusedTypeParameter
     public class TestGenericClass<T>
     {
         public int TestField { get; set; }

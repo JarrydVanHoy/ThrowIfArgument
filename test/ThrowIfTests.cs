@@ -19,12 +19,15 @@ public class ThrowIfTests
     }
 }
 
+// ReSharper disable once InconsistentNaming
 public static class TestExtensions
 {
-    public static IThrowIfBuilder Is100(
+    public static IThrowIfBuilder Is100
+    (
         this IThrowIfBuilder throwIfBuilder,
         int argument,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (argument is not 100)
         {
