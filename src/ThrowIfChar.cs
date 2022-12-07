@@ -5,11 +5,22 @@ namespace ThrowIfArgument;
 
 public static partial class ThrowIfBuilderExtensions
 {
-    public static char IsAscii(
+    /// <summary>
+    ///     Guards against arguments being ASCII characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not an ASCII character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is an ASCII character.</exception>
+    public static char IsAscii
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (!char.IsAscii(argument))
         {
@@ -23,11 +34,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsNotAscii(
+    /// <summary>
+    ///     Guards against arguments being non ASCII characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is an ASCII character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not an ASCII character.</exception>
+    public static char IsNotAscii
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (char.IsAscii(argument))
         {
@@ -41,11 +63,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsControl(
+    /// <summary>
+    ///     Guards against arguments being control characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not a control character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is a control character.</exception>
+    public static char IsControl
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (!char.IsControl(argument))
         {
@@ -59,11 +92,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsNotControl(
+    /// <summary>
+    ///     Guards against arguments being non control characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is a control character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not a control character.</exception>
+    public static char IsNotControl
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (char.IsControl(argument))
         {
@@ -77,11 +121,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsDigit(
+    /// <summary>
+    ///     Guards against arguments being digit characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not a digit character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is a digit character.</exception>
+    public static char IsDigit
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (!char.IsDigit(argument))
         {
@@ -95,11 +150,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsNotDigit(
+    /// <summary>
+    ///     Guards against arguments being non digit characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is a digit character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not a digit character.</exception>
+    public static char IsNotDigit
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (char.IsDigit(argument))
         {
@@ -113,11 +179,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsLetter(
+    /// <summary>
+    ///     Guards against arguments being letter characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not a letter character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is a letter character.</exception>
+    public static char IsLetter
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (!char.IsLetter(argument))
         {
@@ -131,11 +208,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsNotLetter(
+    /// <summary>
+    ///     Guards against arguments being non letter characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is a letter character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not a letter character.</exception>
+    public static char IsNotLetter
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (char.IsLetter(argument))
         {
@@ -149,11 +237,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsLower(
+    /// <summary>
+    ///     Guards against arguments being lower characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not a lower character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is a lower character.</exception>
+    public static char IsLower
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (!char.IsLower(argument))
         {
@@ -167,11 +266,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsNotLower(
+    /// <summary>
+    ///     Guards against arguments being non lower characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is a lower character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not a lower character.</exception>
+    public static char IsNotLower
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (char.IsLower(argument))
         {
@@ -185,11 +295,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsNumber(
+    /// <summary>
+    ///     Guards against arguments being number characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not a number character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is a number character.</exception>
+    public static char IsNumber
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (!char.IsNumber(argument))
         {
@@ -203,11 +324,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsNotNumber(
+    /// <summary>
+    ///     Guards against arguments being non number characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is a number character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not a number character.</exception>
+    public static char IsNotNumber
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (char.IsNumber(argument))
         {
@@ -221,11 +353,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsPunctuation(
+    /// <summary>
+    ///     Guards against arguments being punctuation characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not a punctuation character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is a punctuation character.</exception>
+    public static char IsPunctuation
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (!char.IsPunctuation(argument))
         {
@@ -239,11 +382,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsNotPunctuation(
+    /// <summary>
+    ///     Guards against arguments being non punctuation characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is a punctuation character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not a punctuation character.</exception>
+    public static char IsNotPunctuation
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (char.IsPunctuation(argument))
         {
@@ -257,11 +411,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsSeparator(
+    /// <summary>
+    ///     Guards against arguments being separator characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not a separator character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is a separator character.</exception>
+    public static char IsSeparator
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (!char.IsSeparator(argument))
         {
@@ -275,11 +440,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsNotSeparator(
+    /// <summary>
+    ///     Guards against arguments being non separator characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is a separator character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not a separator character.</exception>
+    public static char IsNotSeparator
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (char.IsSeparator(argument))
         {
@@ -293,11 +469,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsSurrogate(
+    /// <summary>
+    ///     Guards against arguments being surrogate characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not a surrogate character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is a surrogate character.</exception>
+    public static char IsSurrogate
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (!char.IsSurrogate(argument))
         {
@@ -311,11 +498,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsNotSurrogate(
+    /// <summary>
+    ///     Guards against arguments being non surrogate characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is a surrogate character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not a surrogate character.</exception>
+    public static char IsNotSurrogate
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (char.IsSurrogate(argument))
         {
@@ -329,11 +527,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsSymbol(
+    /// <summary>
+    ///     Guards against arguments being symbol characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not a symbol character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is a symbol character.</exception>
+    public static char IsSymbol
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (!char.IsSymbol(argument))
         {
@@ -347,11 +556,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsNotSymbol(
+    /// <summary>
+    ///     Guards against arguments being non symbol characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is a symbol character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not a symbol character.</exception>
+    public static char IsNotSymbol
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (char.IsSymbol(argument))
         {
@@ -365,11 +585,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsUpper(
+    /// <summary>
+    ///     Guards against arguments being upper characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not an upper character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is an upper character.</exception>
+    public static char IsUpper
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (!char.IsUpper(argument))
         {
@@ -383,11 +614,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsNotUpper(
+    /// <summary>
+    ///     Guards against arguments being non upper characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is an upper character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not an upper character.</exception>
+    public static char IsNotUpper
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (char.IsUpper(argument))
         {
@@ -401,11 +643,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsHighSurrogate(
+    /// <summary>
+    ///     Guards against arguments being high surrogate characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not a high surrogate character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is a high surrogate character.</exception>
+    public static char IsHighSurrogate
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (!char.IsHighSurrogate(argument))
         {
@@ -419,11 +672,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsNotHighSurrogate(
+    /// <summary>
+    ///     Guards against arguments being non high surrogate characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is a high surrogate character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not a high surrogate character.</exception>
+    public static char IsNotHighSurrogate
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (char.IsHighSurrogate(argument))
         {
@@ -437,11 +701,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsLowSurrogate(
+    /// <summary>
+    ///     Guards against arguments being low surrogate characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not a low surrogate character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is a low surrogate character.</exception>
+    public static char IsLowSurrogate
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (!char.IsLowSurrogate(argument))
         {
@@ -455,11 +730,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsNotLowSurrogate(
+    /// <summary>
+    ///     Guards against arguments being non low surrogate characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is a low surrogate character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not a low surrogate character.</exception>
+    public static char IsNotLowSurrogate
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (char.IsLowSurrogate(argument))
         {
@@ -473,11 +759,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsWhiteSpace(
+    /// <summary>
+    ///     Guards against arguments being white space characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not a white space character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is a white space character.</exception>
+    public static char IsWhiteSpace
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (!char.IsWhiteSpace(argument))
         {
@@ -491,11 +788,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsNotWhiteSpace(
+    /// <summary>
+    ///     Guards against arguments being non white space characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is a white space character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not a white space character.</exception>
+    public static char IsNotWhiteSpace
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (char.IsWhiteSpace(argument))
         {
@@ -509,11 +817,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsLetterOrDigit(
+    /// <summary>
+    ///     Guards against arguments being letter characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not a letter character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is a letter character.</exception>
+    public static char IsLetterOrDigit
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (!char.IsLetterOrDigit(argument))
         {
@@ -527,11 +846,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static char IsNotLetterAndNotDigit(
+    /// <summary>
+    ///     Guards against arguments being non letter and non digit characters.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is a letter or digit character.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not a letter nor digit character.</exception>
+    public static char IsNotLetterAndNotDigit
+    (
         this IThrowIfBuilder builder,
         char argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (char.IsLetterOrDigit(argument))
         {

@@ -5,23 +5,46 @@ namespace ThrowIfArgument;
 
 public static partial class ThrowIfBuilderExtensions
 {
-    public static ushort IsZero(
+    /// <summary>
+    ///     Guards against arguments being equal to zero.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not equal to zero.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is equal to zero.</exception>
+    public static ushort IsZero
+    (
         this IThrowIfBuilder builder,
         ushort argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         const ushort zero = 0;
 
         return ThrowIf.Argument.IsEqualTo(argument, zero, message, argumentName);
     }
 
-    public static ushort IsLessThan(
+    /// <summary>
+    ///     Guards against arguments being less than <paramref name="comparison" />.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="comparison"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not less than <paramref name="comparison" />.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is less than <paramref name="comparison" />.</exception>
+    public static ushort IsLessThan
+    (
         this IThrowIfBuilder builder,
         ushort argument,
         ushort comparison,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (argument >= comparison)
         {
@@ -35,12 +58,24 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static ushort IsLessThanOrEqualTo(
+    /// <summary>
+    ///     Guards against arguments being less than or equal to <paramref name="comparison" />.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="comparison"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not less than nor equal to <paramref name="comparison" />.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is less than or equal to <paramref name="comparison" />.</exception>
+    public static ushort IsLessThanOrEqualTo
+    (
         this IThrowIfBuilder builder,
         ushort argument,
         ushort comparison,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (argument > comparison)
         {
@@ -54,12 +89,24 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static ushort IsGreaterThan(
+    /// <summary>
+    ///     Guards against arguments being greater than <paramref name="comparison" />.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="comparison"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not greater than <paramref name="comparison" />.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is greater than <paramref name="comparison" />.</exception>
+    public static ushort IsGreaterThan
+    (
         this IThrowIfBuilder builder,
         ushort argument,
         ushort comparison,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (argument <= comparison)
         {
@@ -73,12 +120,24 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static ushort IsGreaterThanOrEqualTo(
+    /// <summary>
+    ///     Guards against arguments being greater than or equal to <paramref name="comparison" />.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="comparison"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not greater than nor equal to <paramref name="comparison" />.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is greater than or equal to <paramref name="comparison" />.</exception>
+    public static ushort IsGreaterThanOrEqualTo
+    (
         this IThrowIfBuilder builder,
         ushort argument,
         ushort comparison,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (argument < comparison)
         {

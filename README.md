@@ -3,7 +3,12 @@
 [![NuGet Status](https://img.shields.io/nuget/v/ThrowIfArgument.svg)](https://www.nuget.org/packages/ThrowIfArgument)
 [![NuGet](https://img.shields.io/nuget/dt/ThrowIfArgument.svg)](https://www.nuget.org/packages/ThrowIfArgument)
 
-This is just another guard clause library for validating your arguments, but I enjoy the way using this API reads quite fluently.  If you're like me, then you've been recreating a library of guard clauses from company to company.  I finally got tired and uploaded my own version of a guard clause library.
+This is just another guard clause library for validating your arguments, but I enjoy the way using this API reads quite
+fluently. If you're like me, then you've been recreating a library of guard clauses from company to company. I finally
+got tired and uploaded my own version of a guard clause library.
+
+This library is very similar to [Guard Clauses](https://github.com/ardalis/GuardClauses), which I highly recommend
+checking out. It is well reviewed and has active support.
 
 ## NuGet Installation
 
@@ -52,4 +57,5 @@ public static ThrowIfArgumentExtensions
     }
 }
 ```
+
 Ping me if you want any new features added to the library ❤️

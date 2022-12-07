@@ -5,13 +5,26 @@ namespace ThrowIfArgument;
 
 public static partial class ThrowIfBuilderExtensions
 {
-    public static float IsEqualTo(
+    /// <summary>
+    ///     Guards against arguments being equal to <paramref name="comparison" /> within a tolerance of <paramref name="tolerance" />.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="comparison"></param>
+    /// <param name="tolerance"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not equal to <paramref name="comparison" /> within a tolerance of <paramref name="tolerance" />.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is equal to <paramref name="comparison" /> within a tolerance of <paramref name="tolerance" />.</exception>
+    public static float IsEqualTo
+    (
         this IThrowIfBuilder builder,
         float argument,
         float comparison,
         float tolerance,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (Math.Abs(argument - comparison) > tolerance)
         {
@@ -25,13 +38,26 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static float IsNotEqualTo(
+    /// <summary>
+    ///     Guards against arguments being not equal to <paramref name="comparison" /> within a tolerance of <paramref name="tolerance" />.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="comparison"></param>
+    /// <param name="tolerance"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is equal to <paramref name="comparison" /> within a tolerance of <paramref name="tolerance" />.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not equal to <paramref name="comparison" /> within a tolerance of <paramref name="tolerance" />.</exception>
+    public static float IsNotEqualTo
+    (
         this IThrowIfBuilder builder,
         float argument,
         float comparison,
         float tolerance,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (Math.Abs(argument - comparison) <= tolerance)
         {
@@ -45,22 +71,46 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static float IsZero(
+    /// <summary>
+    ///     Guards against arguments being equal to zero.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="tolerance"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not equal to zero.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is equal to zero.</exception>
+    public static float IsZero
+    (
         this IThrowIfBuilder builder,
         float argument,
         float tolerance,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         return ThrowIf.Argument.IsEqualTo(argument, 0f, tolerance, message, argumentName);
     }
 
-    public static float IsLessThan(
+    /// <summary>
+    ///     Guards against arguments being less than <paramref name="comparison" />.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="comparison"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not less than <paramref name="comparison" />.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is less than <paramref name="comparison" />.</exception>
+    public static float IsLessThan
+    (
         this IThrowIfBuilder builder,
         float argument,
         float comparison,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (argument >= comparison)
         {
@@ -74,12 +124,24 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static float IsLessThanOrEqualTo(
+    /// <summary>
+    ///     Guards against arguments being less than or equal to <paramref name="comparison" />.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="comparison"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not less than nor equal to <paramref name="comparison" />.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is less than or equal to <paramref name="comparison" />.</exception>
+    public static float IsLessThanOrEqualTo
+    (
         this IThrowIfBuilder builder,
         float argument,
         float comparison,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (argument > comparison)
         {
@@ -93,12 +155,24 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static float IsGreaterThan(
+    /// <summary>
+    ///     Guards against arguments being greater than <paramref name="comparison" />.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="comparison"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not greater than <paramref name="comparison" />.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is greater than <paramref name="comparison" />.</exception>
+    public static float IsGreaterThan
+    (
         this IThrowIfBuilder builder,
         float argument,
         float comparison,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (argument <= comparison)
         {
@@ -112,12 +186,24 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static float IsGreaterThanOrEqualTo(
+    /// <summary>
+    ///     Guards against arguments being greater than or equal to <paramref name="comparison" />.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="comparison"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not greater than nor equal to <paramref name="comparison" />.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is greater than or equal to <paramref name="comparison" />.</exception>
+    public static float IsGreaterThanOrEqualTo
+    (
         this IThrowIfBuilder builder,
         float argument,
         float comparison,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (argument < comparison)
         {

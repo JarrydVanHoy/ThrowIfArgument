@@ -5,14 +5,29 @@ using ThrowIfArgument.Extensions;
 
 namespace ThrowIfArgument;
 
+/// <summary>
+///     A collection of common throw if guards
+/// </summary>
 public static partial class ThrowIfBuilderExtensions
 {
+    /// <summary>
+    ///     Guards against null arguments.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns><paramref name="argument" /> if it is not null.</returns>
+    /// <exception cref="ArgumentNullException">when <paramref name="argument" /> is null.</exception>
     [return: NotNull]
-    public static T IsNull<T>(
+    public static T IsNull<T>
+    (
         this IThrowIfBuilder builder,
         [NotNull] T argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (argument is not null)
         {
@@ -26,15 +41,30 @@ public static partial class ThrowIfBuilderExtensions
                 : message.AddPeriod());
     }
 
+    /// <summary>
+    ///     Guards against equal arguments.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="comparison"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns><paramref name="argument" /> if it is not null and is not equal to <paramref name="comparison" />.</returns>
+    /// <exception cref="ArgumentNullException">when <paramref name="argument" /> or <paramref name="comparison" /> is null.</exception>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is equal to <paramref name="comparison" />.</exception>
     [return: NotNull]
-    public static T IsEqualTo<T>(
+    public static T IsEqualTo<T>
+    (
         this IThrowIfBuilder builder,
         [NotNull] T argument,
-        T comparison,
+        [NotNull] T comparison,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         ThrowIf.Argument.IsNull(argument, message, argumentName);
+        ThrowIf.Argument.IsNull(comparison);
 
         if (!argument.Equals(comparison))
         {
@@ -48,15 +78,30 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
+    /// <summary>
+    ///     Guards against arguments being unequal.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="comparison"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns><paramref name="argument" /> if it is not null and is equal to <paramref name="comparison" />.</returns>
+    /// <exception cref="ArgumentNullException">when <paramref name="argument" /> or <paramref name="comparison" /> is null.</exception>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not equal to <paramref name="comparison" />.</exception>
     [return: NotNull]
-    public static T IsNotEqualTo<T>(
+    public static T IsNotEqualTo<T>
+    (
         this IThrowIfBuilder builder,
         [NotNull] T argument,
-        T comparison,
+        [NotNull] T comparison,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         ThrowIf.Argument.IsNull(argument, message, argumentName);
+        ThrowIf.Argument.IsNull(comparison);
 
         if (argument.Equals(comparison))
         {
@@ -70,13 +115,27 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
+    /// <summary>
+    ///     Guards against arguments not matching an expression.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="expression"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns><paramref name="argument" /> if it is not null and matches <paramref name="expression" />.</returns>
+    /// <exception cref="ArgumentNullException">when <paramref name="argument" /> is null.</exception>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> does not match <paramref name="expression" />.</exception>
     [return: NotNull]
-    public static T IsAgainstExpression<T>(
+    public static T IsAgainstExpression<T>
+    (
         this IThrowIfBuilder builder,
         [NotNull] T argument,
         Func<T, bool> expression,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         ThrowIf.Argument.IsNull(argument);
 
@@ -92,11 +151,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static Type IsNotGeneric(
+    /// <summary>
+    ///     Guards against arguments not being generic types.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is generic type.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not a generic type.</exception>
+    public static Type IsNotGeneric
+    (
         this IThrowIfBuilder builder,
         Type argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (argument.IsGenericType)
         {

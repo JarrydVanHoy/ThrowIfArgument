@@ -6,11 +6,23 @@ namespace ThrowIfArgument;
 
 public static partial class ThrowIfBuilderExtensions
 {
-    public static IEnumerable<T> IsEmpty<T>(
+    /// <summary>
+    ///     Guards against arguments being null or empty.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not null and not empty.</returns>
+    /// <exception cref="ArgumentNullException">when <paramref name="argument" /> is null.</exception>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is empty.</exception>
+    public static IEnumerable<T> IsEmpty<T>
+    (
         this IThrowIfBuilder builder,
         IEnumerable<T> argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         var argumentList = ThrowIf.Argument.IsNull(argument, message, argumentName).ToList();
 
@@ -26,12 +38,25 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static IEnumerable<T> Any<T>(
+    /// <summary>
+    ///     Guards against arguments being null or having any elements matching the <paramref name="predicate" />.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="predicate"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not null and not having any elements matching the <paramref name="predicate" />.</returns>
+    /// <exception cref="ArgumentNullException">when <paramref name="argument" /> is null.</exception>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> contains an element matching the <paramref name="predicate" />.</exception>
+    public static IEnumerable<T> Any<T>
+    (
         this IThrowIfBuilder builder,
         IEnumerable<T> argument,
         Func<T, bool> predicate,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         var argumentList = ThrowIf.Argument.IsNull(argument, message, argumentName).ToList();
 
@@ -47,12 +72,25 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static IEnumerable<T> All<T>(
+    /// <summary>
+    ///     Guards against arguments being null or having all elements matching the <paramref name="predicate" />.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="predicate"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not null and not having all elements matching the <paramref name="predicate" />.</returns>
+    /// <exception cref="ArgumentNullException">when <paramref name="argument" /> is null.</exception>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> only contains elements matching the <paramref name="predicate" />.</exception>
+    public static IEnumerable<T> All<T>
+    (
         this IThrowIfBuilder builder,
         IEnumerable<T> argument,
         Func<T, bool> predicate,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         var argumentList = ThrowIf.Argument.IsNull(argument, message, argumentName).ToList();
 
@@ -68,12 +106,25 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static IEnumerable<T> Contains<T>(
+    /// <summary>
+    ///     Guards against arguments being null or having any elements equal to <paramref name="item" />.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="item"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not null and not having any elements equal to <paramref name="item" />.</returns>
+    /// <exception cref="ArgumentNullException">when <paramref name="argument" /> is null.</exception>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> contains an element equal to <paramref name="item" />.</exception>
+    public static IEnumerable<T> Contains<T>
+    (
         this IThrowIfBuilder builder,
         IEnumerable<T> argument,
         T item,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         var argumentList = ThrowIf.Argument.IsNull(argument, message, argumentName).ToList();
 
@@ -89,12 +140,25 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static IEnumerable<T> DoesNotContain<T>(
+    /// <summary>
+    ///     Guards against arguments being null or not having any elements equal to <paramref name="item" />.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="item"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not null and contains an element equal to <paramref name="item" />.</returns>
+    /// <exception cref="ArgumentNullException">when <paramref name="argument" /> is null.</exception>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> contains an element equal to <paramref name="item" />.</exception>
+    public static IEnumerable<T> DoesNotContain<T>
+    (
         this IThrowIfBuilder builder,
         IEnumerable<T> argument,
         T item,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         var argumentList = ThrowIf.Argument.IsNull(argument, message, argumentName).ToList();
 

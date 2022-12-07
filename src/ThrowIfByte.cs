@@ -5,23 +5,46 @@ namespace ThrowIfArgument;
 
 public static partial class ThrowIfBuilderExtensions
 {
-    public static byte IsZero(
+    /// <summary>
+    ///     Guards against arguments being equal to zero.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not equal to zero.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is equal to zero.</exception>
+    public static byte IsZero
+    (
         this IThrowIfBuilder builder,
         byte argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         const byte zero = 0;
 
         return ThrowIf.Argument.IsEqualTo(argument, zero, message, argumentName);
     }
 
-    public static byte IsLessThan(
+    /// <summary>
+    ///     Guards against arguments being less than <paramref name="comparison" />.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="comparison"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not less than <paramref name="comparison" />.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is less than <paramref name="comparison" />.</exception>
+    public static byte IsLessThan
+    (
         this IThrowIfBuilder builder,
         byte argument,
         byte comparison,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (argument >= comparison)
         {
@@ -35,12 +58,24 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static byte IsLessThanOrEqualTo(
+    /// <summary>
+    ///     Guards against arguments being less than or equal to <paramref name="comparison" />.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="comparison"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not less than nor equal to <paramref name="comparison" />.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is less than or equal to <paramref name="comparison" />.</exception>
+    public static byte IsLessThanOrEqualTo
+    (
         this IThrowIfBuilder builder,
         byte argument,
         byte comparison,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (argument > comparison)
         {
@@ -54,12 +89,24 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static byte IsGreaterThan(
+    /// <summary>
+    ///     Guards against arguments being greater than <paramref name="comparison" />.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="comparison"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not greater than <paramref name="comparison" />.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is greater than <paramref name="comparison" />.</exception>
+    public static byte IsGreaterThan
+    (
         this IThrowIfBuilder builder,
         byte argument,
         byte comparison,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (argument <= comparison)
         {
@@ -73,12 +120,24 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static byte IsGreaterThanOrEqualTo(
+    /// <summary>
+    ///     Guards against arguments being greater than or equal to <paramref name="comparison" />.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="comparison"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not greater than nor equal to <paramref name="comparison" />.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is greater than or equal to <paramref name="comparison" />.</exception>
+    public static byte IsGreaterThanOrEqualTo
+    (
         this IThrowIfBuilder builder,
         byte argument,
         byte comparison,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (argument < comparison)
         {

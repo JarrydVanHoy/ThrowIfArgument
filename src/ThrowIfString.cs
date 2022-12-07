@@ -6,11 +6,22 @@ namespace ThrowIfArgument;
 
 public static partial class ThrowIfBuilderExtensions
 {
-    public static string IsNullOrEmpty(
+    /// <summary>
+    ///     Guards against arguments being null or empty strings.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not null and not empty string.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> a null or empty string.</exception>
+    public static string IsNullOrEmpty
+    (
         this IThrowIfBuilder builder,
         string argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (!string.IsNullOrEmpty(argument))
         {
@@ -24,11 +35,22 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static string IsNullOrWhiteSpace(
+    /// <summary>
+    ///     Guards against arguments being null or white space strings.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not null and not white space string.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> a null or white space string.</exception>
+    public static string IsNullOrWhiteSpace
+    (
         this IThrowIfBuilder builder,
         string argument,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (!string.IsNullOrWhiteSpace(argument))
         {
@@ -42,14 +64,28 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static string IsRegexMatch(
+    /// <summary>
+    ///     Guards against arguments matching a regex pattern.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="pattern"></param>
+    /// <param name="options">Optional regex options.</param>
+    /// <param name="matchTimeout">Optional regex timeout.</param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is not matching the regex pattern.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> matching the regex pattern.</exception>
+    public static string IsRegexMatch
+    (
         this IThrowIfBuilder builder,
         string argument,
         string pattern,
         RegexOptions? options = null,
         TimeSpan? matchTimeout = null,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (options is null)
         {
@@ -77,14 +113,28 @@ public static partial class ThrowIfBuilderExtensions
             argumentName);
     }
 
-    public static string IsNotRegexMatch(
+    /// <summary>
+    ///     Guards against arguments not matching a regex pattern.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="argument"></param>
+    /// <param name="pattern"></param>
+    /// <param name="options">Optional regex options.</param>
+    /// <param name="matchTimeout">Optional regex timeout.</param>
+    /// <param name="message">Optional custom message.</param>
+    /// <param name="argumentName"></param>
+    /// <returns><paramref name="argument" /> if it is matching the regex pattern.</returns>
+    /// <exception cref="ArgumentException">when <paramref name="argument" /> is not matching the regex pattern.</exception>
+    public static string IsNotRegexMatch
+    (
         this IThrowIfBuilder builder,
         string argument,
         string pattern,
         RegexOptions? options = null,
         TimeSpan? matchTimeout = null,
         string? message = null,
-        [CallerArgumentExpression("argument")] string? argumentName = null)
+        [CallerArgumentExpression("argument")] string? argumentName = null
+    )
     {
         if (options is null)
         {
