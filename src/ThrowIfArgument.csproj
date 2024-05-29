@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+        <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <RootNamespace>ThrowIfArgument</RootNamespace>
@@ -15,9 +15,9 @@
         <Description>An extensible argument validation package by @JarrydVanHoy that I feel reads quite fluently.</Description>
         <PackageTags>argument validation guard clause clauses assert assertion</PackageTags>
         <PackageReleaseNotes>
-            Adding XML comments
+            Support .NET 8
         </PackageReleaseNotes>
-        <Version>1.0.3</Version>
+        <Version>1.1.0</Version>
         <PackageIcon>icon.jpeg</PackageIcon>
     </PropertyGroup>
 
