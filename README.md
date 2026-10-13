@@ -18,6 +18,13 @@ Install the [ThrowIfArgument NuGet package](https://nuget.org/packages/ThrowIfAr
 dotnet add package ThrowIfArgument
 ```
 
+### Supported frameworks
+
+- .NET 8
+- .NET 10
+
+Versions 1.x of the package also support .NET 6 and .NET 7.
+
 ## Usage
 
 ```C#
@@ -34,11 +41,11 @@ public void HelloWorld(FooBar fooBar)
 If you feel the package is missing a feature, you can extend with your own features:
 
 ```C#
-public static ThrowIfArgumentExtensions
+public static class ThrowIfArgumentExtensions
 {
     public static string StartsWithThunderclap
     (
-        this IThrowIfArgumentBuilder,
+        this IThrowIfBuilder builder,
         string argument,
         string? message = null,
         [CallerArgumentExpression("argument")] string? argumentName = null

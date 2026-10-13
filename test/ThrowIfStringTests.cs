@@ -22,7 +22,9 @@ public class ThrowIfStringTests
     }
 
     [Theory]
+#pragma warning disable xUnit1012
     [InlineData(null)]
+#pragma warning restore xUnit1012
     [InlineData("")]
     public void IsNullOrEmpty_IsInvalid_ThrowsArgumentException(string argument)
     {
@@ -42,7 +44,9 @@ public class ThrowIfStringTests
     }
 
     [Theory]
+#pragma warning disable xUnit1012
     [InlineData(null)]
+#pragma warning restore xUnit1012
     [InlineData("")]
     [InlineData("   ")]
     public void IsNullOrWhiteSpace_IsInvalid_ThrowsArgumentException(string argument)
